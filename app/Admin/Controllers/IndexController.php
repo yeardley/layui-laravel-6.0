@@ -15,6 +15,6 @@ class IndexController extends AdminController
 {
     public function index()
     {
-        echo 123;
+        echo auth('admin')->user();
     }
 }

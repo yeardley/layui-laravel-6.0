@@ -18,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', 'LoginController@index');
+Route::get('/login', function () {
+    return view('admin.login');
+});
+Route::post('/login', 'LoginController@store');
 
 Route::group([
-    'middleware' => '',
-], function ($route) {
 
+], function ($route) {
+    $route->get('/', 'IndexController@index');
+    $route->get('/logout', 'LoginController@destroy');
 });

@@ -17,7 +17,8 @@ class AdminSeeder extends Seeder
 
     protected function createAdminUsers()
     {
-        \App\Models\AdminUser::create(['name' => 'admin', 'password' => encrypt('admin'), 'is_system' => 1]);
-        \App\Models\AdminUser::create(['name' => 'test', 'password' => encrypt('123456')]);
+        \App\Models\AdminUser::truncate();
+        \App\Models\AdminUser::create(['name' => 'admin', 'password' => bcrypt('admin'), 'is_system' => 1]);
+        \App\Models\AdminUser::create(['name' => 'test', 'password' => bcrypt('123456')]);
     }
 }
