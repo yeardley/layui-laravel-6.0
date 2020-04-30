@@ -12,7 +12,7 @@
             <li class="username">
                 <label>
                     <i class="layui-icon layui-icon-username"></i>
-                    <input class="layui-input" required pattern="^\S{4,}$" name="name" value="admin" autofocus autocomplete="off" placeholder="登录账号" title="请输入登录账号">
+                    <input class="layui-input" required pattern="^\S{4,}$" name="username" value="admin" autofocus autocomplete="off" placeholder="登录账号" title="请输入登录账号">
                 </label>
             </li>
             <li class="password">

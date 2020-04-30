@@ -23,4 +23,13 @@ class AdminController extends Controller
     {
         throw new HttpResponseException(Response::json(['code' => $code, 'info' => $message, 'data' => $data]));
     }
+
+    public function view($templete)
+    {
+        $data = [];
+        foreach ($this as $key => $value) {
+            $data[$key] = $value;
+        }
+        return view($templete, $data);
+    }
 }

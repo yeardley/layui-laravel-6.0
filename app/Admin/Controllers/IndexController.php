@@ -15,6 +15,16 @@ class IndexController extends AdminController
 {
     public function index()
     {
-        echo auth('admin')->user();
+        if (!auth('admin')->user()) {
+            return redirect(route('admin.login', ['skey' => encrypt(request()->url())]));
+        }
+        //获取菜单 权限
+
+        return view('admin.admin');
+    }
+
+    public function home()
+    {
+
     }
 }

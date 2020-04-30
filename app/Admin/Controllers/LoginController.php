@@ -16,11 +16,19 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends AdminController
 {
+
+    public function index()
+    {
+        $this->skey = request()->get('skey');
+        return $this->view('admin.login');
+    }
+
     public function store(LoginRequest $request)
     {
-        $credentials = $request->only('name', 'password');
+        $credentials = $request->only('username', 'password');
         if (Auth::guard('admin')->attempt($credentials)) {
-            $this->success('登录成功', url('admin'));
+            $url = $request->get('skey') ? decrypt($request->get('skey')) : url('admin');
+            $this->success('登录成功', $url);
         }
         $this->error('账户或密码错误');
     }
