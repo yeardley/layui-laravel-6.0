@@ -4,7 +4,7 @@
 @section('body')
 <div class="login-container" data-supersized="{{ url('/static/theme/img/login/bg4.jpg') }},{{ url('/static/theme/img/login/bg2.jpg') }}">
     <div class="header notselect layui-hide-xs">
-        <a href="" class="title">app_name<span class="padding-left-5 font-s10">version</span></a>
+        <a href="" class="title">{{ sysconf('app_name') }}<span class="padding-left-5 font-s10">{{ sysconf('app_version') }}</span></a>
     </div>
     <form data-login-form onsubmit="return false" method="post" class="layui-anim layui-anim-upbit" autocomplete="off">
         <h2 class="notselect">系统管理</h2>
@@ -29,9 +29,8 @@
         </ul>
     </form>
     <div class="footer notselect">
-        <p class="layui-hide-xs"><a target="_blank" href="https://www.google.cn/chrome">推荐使用谷歌浏览器</a></p>
-        ©版权所有 2020-2100
-        yeardley.cn<span class="padding-5">|</span><a target="_blank" href="http://beian.miit.gov.cn">黔ICP备1231321321号-2</a>{/if}
+        <p class="layui-hide-xs"><a target="_blank" href="https://www.google.cn/intl/zh-CN/chrome/">推荐使用谷歌浏览器</a></p>
+        {{ sysconf('site_copyright') }}<span class="padding-5">|</span><a target="_blank" href="http://beian.miit.gov.cn">{{ sysconf('site_beian') }}</a>
     </div>
 </div>
 @endsection

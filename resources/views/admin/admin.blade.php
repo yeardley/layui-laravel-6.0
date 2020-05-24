@@ -2,7 +2,7 @@
 <html lang="zh">
 
 <head>
-    <title> @yield('title', '') 标题</title>
+    <title> @yield('title', '') {{ sysconf('app_name') }}</title>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta name="format-detection" content="telephone=no">
@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=0.4">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{:sysconf('site_icon')}">
+    <link rel="shortcut icon" href="{{ sysconf('site_browser') }}">
     <link rel="stylesheet" href="/static/plugs/layui/css/layui.css?at={{ now()->timestamp }}">
     <link rel="stylesheet" href="/static/theme/css/console.css?at={{ now()->timestamp }}">
     @yield('style')

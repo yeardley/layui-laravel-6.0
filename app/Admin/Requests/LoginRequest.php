@@ -1,6 +1,6 @@
 <?php
 /**
- * Package App\Admin\Requests\LoginRequest
+ * Package App\AdminHelpers\Requests\LoginRequest
  * @Author yeardley
  * @Date 2020/4/30 13:45
  * @Email 510865496@qq.com

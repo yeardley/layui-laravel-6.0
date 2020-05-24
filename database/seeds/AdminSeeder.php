@@ -13,8 +13,26 @@ class AdminSeeder extends Seeder
     {
         $this->createAdminUsers();
         $this->createAdminMenus();
+        $this->createConfigs();
     }
 
+    protected function createConfigs()
+    {
+        \App\Models\Admin\AdminConfig::truncate();
+        $data = [
+            'site_name' => 'Layui-laravel-AdminHelpers',
+            'app_name' => 'Layui-laravel-AdminHelpers',
+            'app_version' => 'v1.0',
+            'site_browser' => '',
+            'site_beian' => '黔ICP备16006642号-2',
+            'site_copyright' => '©版权所有 2019-2025 Layui-laravel-AdminHelpers',
+            'storage_disk' => 'local',
+        ];
+        foreach ($data as $key => $value) {
+            \App\Models\Admin\AdminConfig::create(['key' => $key, 'value' => $value]);
+            $this->command->info('create admin config : '. $key);
+        }
+    }
 
     protected function createAdminUsers()
     {

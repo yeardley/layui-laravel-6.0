@@ -49,7 +49,7 @@ class CreateAdminTables extends Migration
         });
 
 
-        Schema::create('configs', function (Blueprint $table) {
+        Schema::create('admin_configs', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
             $table->longText('value')->nullable();
@@ -67,6 +67,6 @@ class CreateAdminTables extends Migration
         Schema::dropIfExists('admin_users');
         Schema::dropIfExists('admin_roles');
         Schema::dropIfExists('admin_menus');
-        Schema::dropIfExists('configs');
+        Schema::dropIfExists('admin_configs');
     }
 }

@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * @var string
      */
-    protected $admin_namespace = 'App\Admin\Controllers';
+    public const ADMIN_NAMESPACE = 'App\Admin\Controllers';
 
     /**
      * The path to the "home" route for your application.
@@ -81,7 +81,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('admin')
             ->middleware('admin')
-            ->namespace($this->admin_namespace)
+            ->namespace(self::ADMIN_NAMESPACE)
             ->group(base_path('routes/admin.php'));
     }
 

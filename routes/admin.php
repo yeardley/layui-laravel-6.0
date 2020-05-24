@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes
+| AdminHelpers Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -25,4 +25,6 @@ Route::group([
     $route->post('login', 'LoginController@store');
     $route->get('/', 'IndexController@index');
     $route->get('logout', 'LoginController@destroy');
+    $route->get('home', 'IndexController@home');
+    $route->resource('menus', 'System\MenusController');
 });

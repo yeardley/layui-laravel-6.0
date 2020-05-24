@@ -1,6 +1,6 @@
 <?php
 /**
- * Package App\Admin\Controllers\LoginController
+ * Package App\AdminHelpers\Controllers\LoginController
  * @Author yeardley
  * @Date 2020/4/30 10:49
  * @Email 510865496@qq.com
@@ -20,7 +20,7 @@ class LoginController extends AdminController
     public function index()
     {
         $this->skey = request()->get('skey');
-        return $this->view('admin.login');
+        $this->view('admin.login');
     }
 
     public function store(LoginRequest $request)

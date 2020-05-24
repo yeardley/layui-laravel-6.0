@@ -183,8 +183,12 @@ $(function () {
             var index = loading !== false ? $.msg.loading(tips) : 0;
             if (typeof data === 'object' && typeof data['_csrf_'] === 'string') {
                 headers = headers || {};
-                headers['User-Token-Csrf'] = data['_csrf_'];
+                headers['X-CSRF-TOKEN'] = data['_csrf_'];
                 delete data['_csrf_'];
+            }
+            if (method === 'PUT' || method === 'PATCH' || method === 'DELETE') {
+                data._method = method;
+                method = 'POST';
             }
             $.ajax({
                 data: data || {}, type: method || 'GET', url: $.menu.parseUri(url), beforeSend: function (xhr) {

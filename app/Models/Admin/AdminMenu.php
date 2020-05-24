@@ -2,7 +2,7 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Model;
 
 class AdminMenu extends Model
 {
