@@ -31,17 +31,6 @@ class AdminController extends Controller
 
     public $method;
 
-    /**
-     * 失败返回
-     * @param string $message
-     * @param array $data
-     * @param int $code
-     */
-    public function success($message = 'success', $data = [], $code = 1)
-    {
-        throw new HttpResponseException($this->response->setContent(['code' => $code, 'info' => $message, 'data' => $data]));
-    }
-
     public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
@@ -56,6 +45,17 @@ class AdminController extends Controller
             return Str::snake($item);
         }, $actions));
         $this->method = Str::snake($this->method);
+    }
+
+    /**
+     * 失败返回
+     * @param string $message
+     * @param array $data
+     * @param int $code
+     */
+    public function success($message = 'success', $data = [], $code = 1)
+    {
+        throw new HttpResponseException($this->response->setContent(['code' => $code, 'info' => $message, 'data' => $data]));
     }
 
     /**
@@ -159,8 +159,13 @@ class AdminController extends Controller
         return FormHelper::instance($this)->init($model, $template, $id, $field, $where, $data);
     }
 
+    public function store()
+    {
+        FormHelper::instance($this)->save($this->model);
+    }
+
     public function update($id)
     {
-        dump($id);
+        FormHelper::instance($this)->save($this->model, $id);
     }
 }

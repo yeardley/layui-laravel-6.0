@@ -13,6 +13,8 @@ namespace App\Admin\Controllers\System;
 use App\Http\Controllers\AdminController;
 use App\Models\Admin\AdminMenu;
 use App\Tools\Tree;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class MenusController extends AdminController
 {
@@ -48,12 +50,13 @@ class MenusController extends AdminController
 
     public function create()
     {
+        $this->form_url = url('admin/system/menus');
         $this->_form($this->model, 'form');
     }
 
     public function edit($id)
     {
-        dump($id);
+        $this->form_url = url('admin/system/menus', $id);
         $this->view('form');
     }
 

@@ -52,6 +52,21 @@ abstract class Helper
         throw (new ModelNotFoundException())->setModel($class_name);
     }
 
+    /**
+     * @param $class_name
+     * @return Model
+     */
+    protected function buildModel($class_name)
+    {
+        if ($class_name instanceof Model) return $class_name;
+
+        if (class_exists($class_name)) {
+            return app($class_name);
+        }
+
+        throw (new ModelNotFoundException())->setModel($class_name);
+    }
+
 
     /**
      * 实例对象反射

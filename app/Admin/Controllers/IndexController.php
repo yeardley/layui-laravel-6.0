@@ -27,6 +27,13 @@ class IndexController extends AdminController
 
     public function home()
     {
-        return $this->view('admin.home');
+        return $this->view();
+    }
+
+    public function icon()
+    {
+        $this->title = '图标选择器';
+        $this->field = $this->request->get('field', 'icon');
+        $this->view();
     }
 }

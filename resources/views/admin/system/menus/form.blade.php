@@ -1,4 +1,4 @@
-<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+<form class="layui-form layui-card" action="{{ $form_url }}" data-auto="true" method="post" autocomplete="off">
 
     <div class="layui-card-body">
 

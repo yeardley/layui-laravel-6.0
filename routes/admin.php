@@ -26,5 +26,6 @@ Route::group([
     $route->get('/', 'IndexController@index');
     $route->get('logout', 'LoginController@destroy');
     $route->get('home', 'IndexController@home');
-    $route->resource('menus', 'System\MenusController');
+    $route->get('index/icon', 'IndexController@icon');
+    $route->resource('system/menus', 'System\MenusController');
 });

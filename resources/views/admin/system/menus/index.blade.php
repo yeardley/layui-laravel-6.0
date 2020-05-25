@@ -1,7 +1,7 @@
 @extends('admin.main')
 @section('button')
-    <button data-modal='{{ url("admin/menus/create") }}' data-title="添加菜单" class='layui-btn layui-btn-sm layui-btn-primary'>添加菜单</button>
-    <button data-action='{:url("remove")}' data-csrf="{:systoken('remove')}" data-rule="id#{key}" class='layui-btn layui-btn-sm layui-btn-primary'>删除菜单</button>
+    <button data-modal='{{ url("admin/system/menus/create") }}' data-title="添加菜单" class='layui-btn layui-btn-sm layui-btn-primary'>添加菜单</button>
+    <button data-action='{{ url('admin/system/menus') }}' data-method="DELETE" data-csrf="{{ csrf_token() }}" data-rule="id#{key}" class='layui-btn layui-btn-sm layui-btn-primary'>删除菜单</button>
 @endsection
 @section('content')
     <div class="think-box-shadow">

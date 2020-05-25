@@ -29,12 +29,39 @@ class FormHelper extends Helper
     {
         $this->query = $this->buildQuery($model);
 
-        if ($this->controller->request->method() === 'GET') {
-            if (false !== $this->controller->callback('_form_filter', $data)) {
-                $this->controller->view($template, ['vo' => $data]);
-            }
-            return $data;
+        if (false !== $this->controller->callback('_form_filter', $data)) {
+            $this->controller->view($template, ['vo' => $data]);
         }
+        return $data;
+    }
 
+    /**
+     * @param $model
+     * @param $id
+     * @return array|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
+     * @throws BindingResolutionException
+     */
+    public function save($model, $id = 0)
+    {
+        $data = $this->controller->request->all();
+        $model = $this->buildModel($model);
+        if (false !== $this->controller->callback('_save_filter', $data)) {
+            $info = $model->find($id);
+            if ($info) {
+                $info->update($data);
+            } else {
+                $info = $model->newInstance();
+                foreach ($data as $column => $value) {
+                    $info->setAttribute($column, $value);
+                }
+                $info->save();
+            }
+
+            if (false !== $this->controller->callback('_save_result', $data, $info)) {
+                $this->controller->success('操作成功');
+            }
+            return $model;
+        }
+        return $data;
     }
 }

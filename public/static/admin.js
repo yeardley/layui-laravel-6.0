@@ -692,7 +692,7 @@ $(function () {
     /*! 注册 data-icon 事件行为 */
     $body.on('click', '[data-icon]', function (field, location) {
         field = $(this).attr('data-icon') || $(this).attr('data-field') || 'icon';
-        location = window.ROOT_URL + '?s=admin/api.plugs/icon.html&field=' + field;
+        location = '/admin/index/icon?field=' + field;
         $.form.iframe(location, '图标选择');
     });
 
